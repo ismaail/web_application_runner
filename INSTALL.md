@@ -20,6 +20,12 @@ Update `~/.composer/composer.json` file by adding the following lines
 
 ```
 
+And then run the command
+
+```
+composer global update
+```
+
 ## Run
 
 To run the runner server, inside the target folder run the command:
