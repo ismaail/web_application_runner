@@ -25,7 +25,29 @@ class Runner
     private function run($port)
     {
         shell_exec('python -m SimpleHTTPServer ' . $port . ' >/dev/null 2>&1 &');
-        //shell_exec('google-chrome http://localhost:' . $port);
+
+        $this->launch($port);
+
+    }
+
+    /**
+     * Function description
+     *
+     * @param integer $port the port number
+     *
+     * @author Oussama Elgoumri
+     */
+    public function launch($port)
+    {
+        $cmd_result = shell_exec('google-chrome http://localhost:' . $port);
+
+        if (is_null($cmd_result)) {
+            $cmd_result = shell_exec('chromium-browser http://localhost:' . $port);
+
+            if (is_null($cmd_result)) {
+                echo "google-chrome is not found!\n";
+            }
+        }
     }
 
     /**
